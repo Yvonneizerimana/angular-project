@@ -13,6 +13,7 @@ import { BodyComponent } from './body/body.component';
 })
 export class AppComponent {
   student:string[]=["001","19RP00512","Yvonne IZERIMANA"]
+  myName='Keza Giselle'
   imageUrl:string='https://media.istockphoto.com/id/584573082/photo/wedding-hall-or-other-function-facility-set-for-fine-dining.jpg?s=612x612&w=0&k=20&c=Ox9T0JIeGaCXPs_EEoAy5Uc98mY_kCnP9pTz06tb6iI='
   isDisabled:boolean=true
   isActive:boolean=true
@@ -23,7 +24,15 @@ export class AppComponent {
   mouseOver(){
     console.log("hhhh goood mouse over")
   }
-  keyEnter(){
-    console.log("gooog gooog goood key enter")
+  keyEnter(event:any){
+    if(event.code==="Enter")
+    console.log("you pressed enter key")
+  }
+  keyUpFiltering(){
+    console.log("keyup event triggered")
+  }
+  displayUserContentToConsole(user:HTMLInputElement){
+    this.myName=user.value
+console.log(this.myName)
   }
 }

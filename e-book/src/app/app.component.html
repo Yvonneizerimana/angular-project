@@ -16,4 +16,5 @@
  <br>
  <button (click)="buttonClick()">click here</button><br>
  <button (mouseover)="mouseOver()">mouseOver </button><br>
- <input type="text" (keyup)="keyEnter()"/>
+ <input type="text" (keyup)="keyEnter($event)"/><input type="text" (keyup.R)="keyUpFiltering()"/><br>
+ <input type="text" (keyup.Enter)="displayUserContentToConsole(user)" #user/>
