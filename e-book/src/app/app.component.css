@@ -1,3 +1,13 @@
 .active{
     background:yellow;
 }
+.no-active{
+    background: red;
+    color:white;
+}
+.active-border{
+    border: 5px solid cyan;
+}
+.no-active-border{
+    border: 5px solid rgb(0, 255, 153);
+}

@@ -6,4 +6,14 @@
 <img [src]="imageUrl" alt="">
 <button disabled="{{isDisabled}}">disabled using string interpolation</button>
 <button disabled="isDisabled">disabled using binding property</button>
-<button [class.active]="isActive">click me</button>
+<button
+ [class.active]="isActive"
+  [class.no-active]="!isActive" 
+  [class.no-active-border]="!isActive"
+  [class.active-border]="isActive"
+ >click me</button>
+ <button [style.background]="isActive?'cyan':'brown'">check inline css</button>
+ <br>
+ <button (click)="buttonClick()">click here</button><br>
+ <button (mouseover)="mouseOver()">mouseOver </button><br>
+ <input type="text" (keyup)="keyEnter()"/>
