@@ -18,3 +18,60 @@
  <button (mouseover)="mouseOver()">mouseOver </button><br>
  <input type="text" (keyup)="keyEnter($event)"/><input type="text" (keyup.R)="keyUpFiltering()"/><br>
  <input type="text" (keyup.Enter)="displayUserContentToConsole(user)" #user/>
+ <input type="text" [value]="userName" #username (keyup.enter)="updateUsername(username)"/>
+ <input type="text" [(ngModel)]="userOne"/>
+ <h1>{{userOne}}</h1>
+
+ @if(isLoggedIn){
+    <h1>{{fullName}}</h1>
+ }
+ @else{
+    dynamicTemplate 
+ }
+
+ <Button type="submit" (click)="countNumberOfLogin()">Login</Button>
+ @if(loginCount>3){
+    <h1>You have logged in more than 3times</h1>
+ }
+
+ <ng-template #dynamicTemplate>
+    <h1>Hello my ng templates</h1>
+    </ng-template>
+<ng-template #callAction>
+    <button>LOGIN</button>
+</ng-template>
+    <div [ngTemplateOutlet]="callAction">
+        This is login button
+    </div>
+    <div>
+        <h1>sidebar</h1>
+        <button>SIDEBAR</button>
+    </div>
+
+    <h1>{{names}}</h1>
+    <h2>{{names[0]}}</h2>
+    <h2>{{names[1]}}</h2>
+    <h2>{{names[2]}}</h2>
+    <h2>{{names[3]}}</h2>
+
+@for(name of names; track name){
+    <h1>{{name}}</h1>
+    
+}
+
+@for(name of names; track name){
+    <ul>
+        <li>{{name}}</li>
+    </ul>
+}
+<ul>
+@for(student of studentsDetails; track student){
+<li>{{student.name}}<button type="submit" (click)="onDelete()">delete</button></li>
+}
+</ul>
+
+<button type="submit" (click)="addNewUser()">Add NewUser</button>
+
+
+
+
