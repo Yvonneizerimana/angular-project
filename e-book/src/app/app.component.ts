@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
-import { BodyComponent } from './body/body.component';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { NgTemplateOutlet} from '@angular/common';
+import { PostsListComponent } from './posts-list/posts-list.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent,BodyComponent,FormsModule,NgTemplateOutlet],
+  imports: [RouterOutlet,HeaderComponent,NavbarComponent,PostsListComponent,FormsModule,NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  
+  postTitle:string="Post 1"
+
   student:string[]=["001","19RP00512","Yvonne IZERIMANA"]
   myName='Keza Giselle'
   imageUrl:string='https://media.istockphoto.com/id/584573082/photo/wedding-hall-or-other-function-facility-set-for-fine-dining.jpg?s=612x612&w=0&k=20&c=Ox9T0JIeGaCXPs_EEoAy5Uc98mY_kCnP9pTz06tb6iI='
@@ -36,6 +40,14 @@ export class AppComponent {
     {id:4 ,name:"Berwa MUNYANA",Regno:"76657382"},
     {id:5 ,name:"Munana Samuel",Regno:"7899100388"},
   ]
+
+  userRole:string="admin"
+  
+  messageFromChild:string=''
+
+  receiveMessage(message:string){
+    this.messageFromChild=message
+  }
 
   buttonClick(){
     console.log('buttonClicked')
@@ -71,12 +83,21 @@ console.log(this.userName)
     this.studentsDetails.push(newUser)
   }
   onDelete(){
-     this .studentsDetails.splice(this.studentsDetails.indexOf(this.studentsDetails),1)
+     let index=this .studentsDetails.indexOf(this.studentsDetails)
+    this.studentsDetails.splice(index,1)
+     console.log(index)
   }
   constructor(){
     let length=this.studentsDetails.length
     console.log(length)
   }
+
+  deleteByIndex(index:number){
+     this.studentsDetails.splice(index,1)
+     console.log(index)
+  }
+
+  
 
 }
 

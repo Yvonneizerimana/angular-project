@@ -1,6 +1,12 @@
-<h1>Welcome to your first app angular app</h1>
+
 <header-root></header-root>
-<app-body></app-body>
+<navbar-root></navbar-root>
+<h1>{{postTitle}}</h1>
+<h1>{{messageFromChild}}</h1>
+<app-posts-list [postListTitle]="postTitle" (messageEvent)="receiveMessage($event)"></app-posts-list>
+
+
+<h1>Welcome to your first app angular app</h1>
 <p>{{student}}</p>
 <p>{{5+5}}</p>
 <img [src]="imageUrl" alt="">
@@ -71,6 +77,29 @@
 </ul>
 
 <button type="submit" (click)="addNewUser()">Add NewUser</button>
+
+@for(students of studentsDetails; track students; let i=$index ){
+    <h1>{{i}}{{students.name}}</h1><button type="submit" (click)="deleteByIndex(i)">DeleteByIndex</button>"
+}
+@empty{
+    <p>No students in the object by using parameter</p>
+    }
+@if(studentsDetails.length==0){
+    <h1>No Students</h1>
+}
+
+@switch(userRole){
+    @case('admin'){
+   <p [style.color]="userRole? 'green':'red'" [style.textTransform]="userRole? 'uppercase':'lowercase'">Welcome admin we</p>
+    }
+    @case('user'){
+   <p>Welcome user we</p>
+    }
+    @default {
+        <p>Welcome default we</p>
+    }
+}
+
 
 
 
